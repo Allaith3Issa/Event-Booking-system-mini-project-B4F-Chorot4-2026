@@ -1,5 +1,5 @@
-export type EventStatus = "Available" | "Almost full" | "Full" | "Past";
-export type BookingStatus = "Active" | "Cancelled";
+export type EventStatus = 'Available' | 'Almost full' | 'Full' | 'Past';
+export type BookingStatus = 'Active' | 'Cancelled';
 
 export interface EventItem {
   id: string;
