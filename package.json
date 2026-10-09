@@ -1,0 +1,19 @@
+{
+  "name": "event-booking-hub",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "api",
+    "client"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=client",
+    "build": "npm run build --workspace=client",
+    "lint": "npm run lint --workspace=client",
+    "start": "npm run preview --workspace=client",
+    "client:dev": "npm run dev --workspace=client",
+    "client:build": "npm run build --workspace=client",
+    "api:dev": "npm run start:dev --workspace=api",
+    "api:build": "npm run build --workspace=api"
+  }
+}

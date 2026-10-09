@@ -1,0 +1,8 @@
+{
+  "name": "B4F Hub - Event Booking",
+  "description": "Event booking system featuring event listings, booking management, and seat reservation.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
