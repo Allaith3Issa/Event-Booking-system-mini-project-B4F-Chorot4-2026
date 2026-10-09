@@ -1,16 +1,16 @@
-import {Routes, Route, Link} from "react-router-dom";
+import {Routes, Route,} from "react-router-dom";
 import EventsPage from "./pages/EventsPage";
 import EventDetailsPage from "./pages/EventDetailsPage";
 import BookingFormPage from "./pages/BookingFormPage";
 import ConfirmationPage from "./pages/ConfirmationPage";
 import ManageBookingPage from "./pages/ManageBookingPage";
+import NavBar from "./components/NavBar";
 
 export default function App() {
   return (
     <>
       <nav>
-        <Link to="/">Events</Link> |{" "}
-        <Link to="/manage">Find / Manage Booking</Link>
+        <NavBar />
       </nav>
       <Routes>
         <Route path="/" element={<EventsPage />} />
