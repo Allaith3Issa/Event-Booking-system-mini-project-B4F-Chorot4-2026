@@ -2,7 +2,7 @@ export type EventStatus = "Available" | "Almost full" | "Full" | "Past";
 export type BookingStatus = "Active" | "Cancelled";
 
 export interface EventItem {
-  id: string;
+  id: number;
   title: string;
   description: string;
   date: string; // "YYYY-MM-DD"
@@ -17,7 +17,7 @@ export interface EventItem {
 }
 
 export interface Booking {
-  id: string;
+  id: number;
   code: string; // "EV-2093"
   eventId: string;
   event: EventItem; // with UPDATED availability

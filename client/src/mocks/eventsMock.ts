@@ -10,7 +10,7 @@ export const MOCK_CATEGORIES: string[] = [
 
 export const MOCK_EVENTS: EventItem[] = [
   {
-    id: "e1",
+    id: 1,
     title: "UI Design Basics",
     description: "A hands-on introduction to interface design.",
     date: "2026-10-15",
@@ -24,7 +24,7 @@ export const MOCK_EVENTS: EventItem[] = [
     status: "Almost full",
   },
   {
-    id: "e2",
+    id: 2,
     title: "React in Depth",
     description: "Advanced React patterns and hooks.",
     date: "2026-10-20",
@@ -38,7 +38,7 @@ export const MOCK_EVENTS: EventItem[] = [
     status: "Full",
   },
   {
-    id: "e3",
+    id: 3,
     title: "AI in Daily Life",
     description: "A talk about AI in everyday products.",
     date: "2026-10-22",
@@ -52,7 +52,7 @@ export const MOCK_EVENTS: EventItem[] = [
     status: "Available",
   },
   {
-    id: "e4",
+    id: 4,
     title: "Jazz Night",
     description: "Live jazz with local artists.",
     date: "2026-10-25",
@@ -66,7 +66,7 @@ export const MOCK_EVENTS: EventItem[] = [
     status: "Almost full",
   },
   {
-    id: "e5",
+    id: 5,
     title: "Startup Meetup",
     description: "Meet founders and investors.",
     date: "2026-10-28",
@@ -80,7 +80,7 @@ export const MOCK_EVENTS: EventItem[] = [
     status: "Available",
   },
   {
-    id: "e6",
+    id: 6,
     title: "Node.js Workshop",
     description: "Build a REST API with Node.js.",
     date: "2026-10-30",
@@ -94,7 +94,7 @@ export const MOCK_EVENTS: EventItem[] = [
     status: "Almost full",
   },
   {
-    id: "e7",
+    id: 7,
     title: "Football Match",
     description: "Friendly football match.",
     date: "2026-09-01",
@@ -108,7 +108,7 @@ export const MOCK_EVENTS: EventItem[] = [
     status: "Past",
   },
   {
-    id: "e8",
+    id: 8,
     title: "Classic Concert",
     description: "Orchestra night.",
     date: "2026-09-15",
