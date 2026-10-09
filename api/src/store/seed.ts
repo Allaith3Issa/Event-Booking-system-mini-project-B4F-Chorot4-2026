@@ -23,7 +23,7 @@ const bookedAt = `${dateAfterDays(-14)}T00:00:00.000Z`;
 
 export const seedEvents: EventItem[] = [
   {
-    id: 'e1',
+    id: 1,
     imageUrl: placeholderImageUrl,
     title: 'Introduction to Web Development',
     description:
@@ -39,7 +39,7 @@ export const seedEvents: EventItem[] = [
     status: 'Available',
   },
   {
-    id: 'e2',
+    id: 2,
     imageUrl: placeholderImageUrl,
     title: 'Small Team Photography Workshop',
     description:
@@ -55,7 +55,7 @@ export const seedEvents: EventItem[] = [
     status: 'Available',
   },
   {
-    id: 'e3',
+    id: 3,
     imageUrl: placeholderImageUrl,
     title: 'UI Design Basics',
     description:
@@ -71,7 +71,7 @@ export const seedEvents: EventItem[] = [
     status: 'Available',
   },
   {
-    id: 'e4',
+    id: 4,
     imageUrl: placeholderImageUrl,
     title: 'Acoustic Music Evening',
     description:
@@ -87,7 +87,7 @@ export const seedEvents: EventItem[] = [
     status: 'Available',
   },
   {
-    id: 'e5',
+    id: 5,
     imageUrl: placeholderImageUrl,
     title: 'Community Football Practice',
     description:
@@ -103,7 +103,7 @@ export const seedEvents: EventItem[] = [
     status: 'Available',
   },
   {
-    id: 'e6',
+    id: 6,
     imageUrl: placeholderImageUrl,
     title: 'Junior Developers Meetup',
     description:
@@ -119,7 +119,7 @@ export const seedEvents: EventItem[] = [
     status: 'Available',
   },
   {
-    id: 'e7',
+    id: 7,
     imageUrl: placeholderImageUrl,
     title: 'Writing Your First CV',
     description:
@@ -135,7 +135,7 @@ export const seedEvents: EventItem[] = [
     status: 'Available',
   },
   {
-    id: 'e8',
+    id: 8,
     imageUrl: placeholderImageUrl,
     title: 'JavaScript Problem Solving',
     description:
@@ -151,7 +151,7 @@ export const seedEvents: EventItem[] = [
     status: 'Available',
   },
   {
-    id: 'e9',
+    id: 9,
     imageUrl: placeholderImageUrl,
     title: 'Community Choir Concert',
     description:
@@ -167,7 +167,7 @@ export const seedEvents: EventItem[] = [
     status: 'Available',
   },
   {
-    id: 'e10',
+    id: 10,
     imageUrl: placeholderImageUrl,
     title: 'Morning Walking Group',
     description:
@@ -186,10 +186,10 @@ export const seedEvents: EventItem[] = [
 
 export const seedBookings: Booking[] = [
   {
-    id: 'b1',
+    id: 1,
     code: 'EV-1001',
-    eventId: 'e1',
-    event: seedEvents.find((event) => event.id === 'e1'),
+    eventId: 1,
+    event: seedEvents.find((event) => event.id === 1),
     customerName: 'Omar Hassan',
     customerPhone: '0930000001',
     places: 2,
@@ -198,10 +198,10 @@ export const seedBookings: Booking[] = [
     canCancel: false,
   },
   {
-    id: 'b2',
+    id: 2,
     code: 'EV-1002',
-    eventId: 'e2',
-    event: seedEvents.find((event) => event.id === 'e2'),
+    eventId: 2,
+    event: seedEvents.find((event) => event.id === 2),
     customerName: 'Lina Khalil',
     customerPhone: '0930000002',
     places: 4,
@@ -210,10 +210,10 @@ export const seedBookings: Booking[] = [
     canCancel: false,
   },
   {
-    id: 'b3',
+    id: 3,
     code: 'EV-1003',
-    eventId: 'e2',
-    event: seedEvents.find((event) => event.id === 'e2'),
+    eventId: 2,
+    event: seedEvents.find((event) => event.id === 2),
     customerName: 'Rami Saleh',
     customerPhone: '0930000003',
     places: 4,
@@ -222,10 +222,10 @@ export const seedBookings: Booking[] = [
     canCancel: false,
   },
   {
-    id: 'b4',
+    id: 4,
     code: 'EV-1004',
-    eventId: 'e2',
-    event: seedEvents.find((event) => event.id === 'e2'),
+    eventId: 2,
+    event: seedEvents.find((event) => event.id === 2),
     customerName: 'Hala Nasser',
     customerPhone: '0930000004',
     places: 2,
@@ -234,10 +234,10 @@ export const seedBookings: Booking[] = [
     canCancel: false,
   },
   {
-    id: 'b5',
+    id: 5,
     code: 'EV-1005',
-    eventId: 'e3',
-    event: seedEvents.find((event) => event.id === 'e3'),
+    eventId: 3,
+    event: seedEvents.find((event) => event.id === 3),
     customerName: 'Sara Ahmad',
     customerPhone: '0930000005',
     places: 4,
@@ -246,10 +246,10 @@ export const seedBookings: Booking[] = [
     canCancel: false,
   },
   {
-    id: 'b6',
+    id: 6,
     code: 'EV-1006',
-    eventId: 'e4',
-    event: seedEvents.find((event) => event.id === 'e4'),
+    eventId: 4,
+    event: seedEvents.find((event) => event.id === 4),
     customerName: 'Yazan Ali',
     customerPhone: '0930000006',
     places: 4,
@@ -258,10 +258,10 @@ export const seedBookings: Booking[] = [
     canCancel: false,
   },
   {
-    id: 'b7',
+    id: 7,
     code: 'EV-1007',
-    eventId: 'e4',
-    event: seedEvents.find((event) => event.id === 'e4'),
+    eventId: 4,
+    event: seedEvents.find((event) => event.id === 4),
     customerName: 'Nour Hamdan',
     customerPhone: '0930000007',
     places: 4,
@@ -270,10 +270,10 @@ export const seedBookings: Booking[] = [
     canCancel: false,
   },
   {
-    id: 'b8',
+    id: 8,
     code: 'EV-1008',
-    eventId: 'e4',
-    event: seedEvents.find((event) => event.id === 'e4'),
+    eventId: 4,
+    event: seedEvents.find((event) => event.id === 4),
     customerName: 'Kareem Mustafa',
     customerPhone: '0930000008',
     places: 1,
@@ -282,10 +282,10 @@ export const seedBookings: Booking[] = [
     canCancel: false,
   },
   {
-    id: 'b9',
+    id: 9,
     code: 'EV-1009',
-    eventId: 'e3',
-    event: seedEvents.find((event) => event.id === 'e3'),
+    eventId: 3,
+    event: seedEvents.find((event) => event.id === 3),
     customerName: 'Maya Ibrahim',
     customerPhone: '0930000009',
     places: 2,
@@ -294,10 +294,10 @@ export const seedBookings: Booking[] = [
     canCancel: false,
   },
   {
-    id: 'b10',
+    id: 10,
     code: 'EV-1010',
-    eventId: 'e4',
-    event: seedEvents.find((event) => event.id === 'e4'),
+    eventId: 4,
+    event: seedEvents.find((event) => event.id === 4),
     customerName: 'Fadi Darwish',
     customerPhone: '0930000010',
     places: 3,
