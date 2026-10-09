@@ -20,6 +20,7 @@ export interface EventItem {
   id: string;
   title: string;
   description: string;
+  imageUrl: string;          // URL of the event image; placeholder until real images are ready
   date: string;              // "YYYY-MM-DD"
   time: string;              // "HH:mm" (24h)
   location: string;
@@ -69,6 +70,7 @@ Default: upcoming only, sorted by date then time.
     "id": "e3",
     "title": "UI Design Basics",
     "description": "A hands-on introduction to interface design.",
+    "imageUrl": "http://localhost:3000/assets/images/placeholder.jpg",
     "date": "2026-10-15",
     "time": "18:00",
     "location": "Innovation Hub, Hall B",
@@ -128,6 +130,7 @@ Request
   "eventId": "e3",
   "event": {
     "id": "e3", "title": "UI Design Basics", "description": "...",
+    "imageUrl": "http://localhost:3000/assets/images/placeholder.jpg",
     "date": "2026-10-15", "time": "18:00", "location": "Innovation Hub, Hall B",
     "category": "Workshop", "capacity": 30,
     "booked": 29, "remaining": 1, "bookingPercentage": 97, "status": "Almost full"
@@ -203,4 +206,3 @@ Request
 - Build to the shapes above. Majed writes the seed and `computeAvailability(event, bookings, now)` as plain functions. Adham starts from a stub with the same signature and swaps in Majed's real one when ready.
 - Test with Postman or curl against the examples in this file.
 **Integration:** as soon as each endpoint is ready, its owner posts in the group chat. The matching frontend person switches that call from mock to real.
- 
