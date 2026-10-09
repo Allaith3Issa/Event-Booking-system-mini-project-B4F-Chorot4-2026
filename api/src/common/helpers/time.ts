@@ -1,4 +1,4 @@
-import { EventItem } from '../types';
+import { EventItem } from '../../types';
 
 export function hasStarted(event: EventItem, now: Date): boolean {
   const today = new Intl.DateTimeFormat('en-CA', {

@@ -1,4 +1,4 @@
-import { EventItem, Booking, EventStatus } from '../types';
+import { EventItem, Booking, EventStatus } from '../../types';
 import { hasStarted } from './time';
 
 export function computeAvailability(

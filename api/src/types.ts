@@ -5,6 +5,7 @@ export interface EventItem {
   id: string;
   title: string;
   description: string;
+  imageUrl: string;
   date: string; // "YYYY-MM-DD"
   time: string; // "HH:mm" (24h)
   location: string;
