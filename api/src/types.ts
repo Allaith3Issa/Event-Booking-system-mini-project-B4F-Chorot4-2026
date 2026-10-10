@@ -28,8 +28,14 @@ export interface Booking {
   bookedAt: string; // ISO date-time
   status: BookingStatus;
   canCancel: boolean; // computed by backend: Active AND event not started
+  cancelledAt?: string;
 }
-
+export interface CreateBookingData {
+  eventId: number;
+  customerName: string;
+  customerPhone: string;
+  places: number;
+}
 export interface ApiError {
   statusCode: number;
   message: string; // one readable sentence, ready to display
