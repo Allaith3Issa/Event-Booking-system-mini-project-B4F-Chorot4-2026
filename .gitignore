@@ -2,3 +2,11 @@ node_modules
 dist
 *.tsbuildinfo
 .env
+
+# Local agent guidance and notes
+AGENTS.md
+AGENTS*.md
+AGENT.md
+AGENT*.md
+.agents/
+.codex/
