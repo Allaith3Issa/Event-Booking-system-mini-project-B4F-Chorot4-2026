@@ -16,7 +16,7 @@ export default function WrongDoor() {
 
         <div className="wrong-door__actions">
           <Link
-            to="/events"
+            to="/"
             className="wrong-door__btn wrong-door__btn--primary"
           >
             Back to Events
