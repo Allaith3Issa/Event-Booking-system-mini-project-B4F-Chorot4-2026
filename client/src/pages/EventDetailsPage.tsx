@@ -1,7 +1,7 @@
 import {useEffect, useState, useCallback} from "react";
 import {useParams, Link, useNavigate} from "react-router-dom";
 import {EventItem} from "../types";
-import {getEventById} from "../api/bookingApi";
+import {getEventById} from "../api/eventsAPI";
 import StatusBadge from "../components/StatusBadge";
 import LoadingMessage from "../components/LoadingMessage";
 import ErrorMessage from "../components/ErrorMessage";

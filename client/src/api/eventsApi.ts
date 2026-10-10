@@ -1,52 +1,19 @@
-import { EventItem, ApiError } from "../types";
-import { MOCK_EVENTS, MOCK_CATEGORIES } from "../mocks/eventsMock"; 
+import {EventItem, ApiError} from "../types";
 
-
-const USE_MOCK = import.meta.env.VITE_USE_MOCK !== "false"; 
 const BASE_URL = "http://localhost:3000";
-
 
 export interface GetEventsParams {
   category?: string;
-  date?: string;          
+  date?: string;
   availableOnly?: boolean;
   includePast?: boolean;
 }
 
-
-export async function getEvents(params?: GetEventsParams): Promise<EventItem[]> {
-  if (USE_MOCK) {
-    
-    await new Promise((resolve) => setTimeout(resolve, 200));
-    let result = [...MOCK_EVENTS];
-
-   
-    if (!params?.includePast) {
-      result = result.filter((e) => e.status !== "Past");
-    }
-
-   
-    if (params?.category && params.category !== "All") {
-      result = result.filter(
-        (e) => e.category.toLowerCase() === params.category?.toLowerCase()
-      );
-    }
-
-   
-    if (params?.date) {
-      result = result.filter((e) => e.date === params.date);
-    }
-
-   
-    if (params?.availableOnly) {
-      result = result.filter((e) => e.remaining > 0);
-    }
-
-    return result;
-  }
-
-  
+export async function getEvents(
+  params?: GetEventsParams,
+): Promise<EventItem[]> {
   const queryParams = new URLSearchParams();
+
   if (params?.category && params.category !== "All") {
     queryParams.append("category", params.category);
   }
@@ -61,27 +28,36 @@ export async function getEvents(params?: GetEventsParams): Promise<EventItem[]> 
   }
 
   const response = await fetch(`${BASE_URL}/events?${queryParams.toString()}`);
-  
+
   if (!response.ok) {
-    const errorData: ApiError = await response.json();
+    const errorData: ApiError = await response.json().catch(() => ({}));
     throw new Error(errorData.message || "Failed to fetch events");
   }
-  
+
   return response.json();
 }
 
+export async function getEventById(id: string | number): Promise<EventItem> {
+  const response = await fetch(`${BASE_URL}/events/${id}`);
+
+  if (!response.ok) {
+    const errorData: ApiError = await response.json().catch(() => ({}));
+    throw new Error(errorData.message || "Event not found");
+  }
+
+  return response.json();
+}
 
 export async function getEventCategories(): Promise<string[]> {
-  if (USE_MOCK) {
-    return MOCK_CATEGORIES;
-  }
+  try {
+    const response = await fetch(`${BASE_URL}/events?includePast=true`);
+    if (!response.ok) throw new Error();
 
-  const response = await fetch(`${BASE_URL}/events/categories`);
-  
-  if (!response.ok) {
-    const errorData: ApiError = await response.json();
-    throw new Error(errorData.message || "Failed to fetch categories");
+    const events: EventItem[] = await response.json();
+    return Array.from(new Set(events.map((e) => e.category)));
+  } catch (error) {
+    console.log(error);
+    
+    return ["Workshop", "Talk", "Concert", "Sports", "Meetup"];
   }
-  
-  return response.json();
 }
