@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { EventItem, ApiError } from "../types";
-import { getEvents, getEventCategories } from "../api/eventsApi";
+import { getEvents, getEventCategories } from "../api/eventsAPI";
 import { EventCard } from "../components/EventCard";
 import { FiltersBar } from "../components/FiltersBar";
 import type { Filters } from "../components/FiltersBar";
