@@ -1,14 +1,15 @@
 import { useEffect, useState, useCallback } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { EventItem } from "../types";
 import { getEventById } from "../api/bookingApi";
 import StatusBadge from "../components/StatusBadge";
 import LoadingMessage from "../components/LoadingMessage";
 import ErrorMessage from "../components/ErrorMessage";
+import EventAvailability from "../components/EventAvailability";
+import BookingActionButton from "../components/BookingActionButton";
 
 export default function EventDetailsPage() {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
 
   const [event, setEvent] = useState<EventItem | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -123,67 +124,22 @@ export default function EventDetailsPage() {
           <p className="event-description">{event.description}</p>
         </section>
 
-        <section className="availability-section">
-          <h2>Availability</h2>
+        {/* Modular Availability Summary & Progress Bar Component */}
+        <EventAvailability
+          capacity={event.capacity}
+          booked={event.booked}
+          remaining={event.remaining}
+          bookingPercentage={event.bookingPercentage}
+          status={event.status}
+        />
 
-          <div className="availability-grid">
-            <div className="availability-card">
-              <span className="availability-label">Capacity</span>
-              <span className="availability-number">{event.capacity}</span>
-            </div>
-            <div className="availability-card">
-              <span className="availability-label">Booked</span>
-              <span className="availability-number">{event.booked}</span>
-            </div>
-            <div className="availability-card">
-              <span className="availability-label">Remaining</span>
-              <span className="availability-number highlight">
-                {event.remaining}
-              </span>
-            </div>
-            <div className="availability-card">
-              <span className="availability-label">Booked</span>
-              <span className="availability-number">
-                {event.bookingPercentage}%
-              </span>
-            </div>
-          </div>
-
-          {/* Bonus: Progress bar */}
-          <div className="progress-bar-container">
-            <div
-              className={`progress-bar-fill status-${event.status.toLowerCase().replace(/\s+/g, "-")}`}
-              style={{
-                width: `${Math.min(100, Math.max(0, event.bookingPercentage))}%`,
-              }}
-            />
-          </div>
-        </section>
-
-        <section className="booking-action-section">
-          {isBookable ? (
-            <div className="booking-allowed">
-              <button
-                className="btn-primary"
-                onClick={() => navigate(`/events/${event.id}/book`)}
-              >
-                Book places
-              </button>
-              <p className="helper-text">1 to 4 places per booking</p>
-            </div>
-          ) : (
-            <div className="booking-disabled-box">
-              <button className="btn-disabled" disabled>
-                Book places
-              </button>
-              <p className="disabled-notice">
-                {event.status === "Full" || event.remaining === 0
-                  ? "This event is full"
-                  : "This event has already started"}
-              </p>
-            </div>
-          )}
-        </section>
+        {/* Modular Booking Action Button Component */}
+        <BookingActionButton
+          eventId={event.id}
+          isBookable={isBookable}
+          status={event.status}
+          remaining={event.remaining}
+        />
       </article>
     </div>
   );
