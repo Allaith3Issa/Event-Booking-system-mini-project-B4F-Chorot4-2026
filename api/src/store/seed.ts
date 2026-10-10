@@ -2,7 +2,7 @@ import { EventItem, Booking } from '../types';
 import { computeAvailability } from '../common/helpers/availability';
 import { hasStarted } from '../common/helpers/time';
 
-const now = new Date();
+export const now = new Date();
 const placeholderImageUrl =
   'http://localhost:3000/assets/images/placeholder.jpg';
 
