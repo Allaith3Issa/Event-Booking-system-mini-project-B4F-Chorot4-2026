@@ -2,6 +2,11 @@ interface StatusBadgeProps {
   status: string;
 }
 
-export default function StatusBadge({status}: StatusBadgeProps) {
-  return <span className="status-badge">{status}</span>;
+export default function StatusBadge({ status }: StatusBadgeProps) {
+  const cls = status.replace(/\s+/g, "-");
+  return (
+    <span className={`status-badge status-badge--${cls}`}>
+      {status}
+    </span>
+  );
 }
