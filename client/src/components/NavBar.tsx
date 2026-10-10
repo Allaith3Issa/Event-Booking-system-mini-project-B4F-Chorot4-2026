@@ -3,7 +3,12 @@ import {NavLink} from "react-router-dom";
 export default function Navbar() {
   return (
     <nav className="navbar">
-      <div className="navbar-brand">Event Booking</div>
+      <div className="navbar-brand">
+        <NavLink
+          to="/"
+        >Event Booking
+        </NavLink>
+        </div>
       <div className="navbar-links">
         <NavLink
           to="/"
