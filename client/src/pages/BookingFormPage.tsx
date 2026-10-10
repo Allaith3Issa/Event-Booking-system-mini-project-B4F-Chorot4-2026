@@ -62,7 +62,12 @@ export default function BookingFormPage() {
     }
 
     const placesNum = Number(places);
-    if (!placesNum || !Number.isInteger(placesNum) || placesNum < 1 || placesNum > 4) {
+    if (
+      !placesNum ||
+      !Number.isInteger(placesNum) ||
+      placesNum < 1 ||
+      placesNum > 4
+    ) {
       errors.places = "Places must be a whole number between 1 and 4";
     } else if (event && placesNum > event.remaining) {
       errors.places = `Only ${event.remaining} places remain for this event`;
@@ -116,7 +121,10 @@ export default function BookingFormPage() {
   if (pageError || !event) {
     return (
       <div className="page-container">
-        <ErrorMessage message={pageError || "Event not found"} onRetry={loadEvent} />
+        <ErrorMessage
+          message={pageError || "Event not found"}
+          onRetry={loadEvent}
+        />
         <div style={{ marginTop: "1rem" }}>
           <Link to="/" className="back-link">
             &larr; Back to events
@@ -141,8 +149,11 @@ export default function BookingFormPage() {
         <div className="event-summary-banner">
           <h2 className="summary-title">{event.title}</h2>
           <p className="summary-meta">
-            {event.date} &middot; {event.time} &middot; {event.location} &middot;{" "}
-            <span className="places-left-tag">{event.remaining} places left</span>
+            {event.date} &middot; {event.time} &middot; {event.location}{" "}
+            &middot;{" "}
+            <span className="places-left-tag">
+              {event.remaining} places left
+            </span>
           </p>
         </div>
 
@@ -167,11 +178,14 @@ export default function BookingFormPage() {
               value={customerName}
               onChange={(e) => {
                 setCustomerName(e.target.value);
-                if (fieldErrors.name) setFieldErrors({ ...fieldErrors, name: undefined });
+                if (fieldErrors.name)
+                  setFieldErrors({ ...fieldErrors, name: undefined });
               }}
               disabled={isSubmitting}
             />
-            {fieldErrors.name && <span className="field-error-text">{fieldErrors.name}</span>}
+            {fieldErrors.name && (
+              <span className="field-error-text">{fieldErrors.name}</span>
+            )}
           </div>
 
           {/* Phone Number */}
@@ -187,11 +201,14 @@ export default function BookingFormPage() {
               value={customerPhone}
               onChange={(e) => {
                 setCustomerPhone(e.target.value);
-                if (fieldErrors.phone) setFieldErrors({ ...fieldErrors, phone: undefined });
+                if (fieldErrors.phone)
+                  setFieldErrors({ ...fieldErrors, phone: undefined });
               }}
               disabled={isSubmitting}
             />
-            {fieldErrors.phone && <span className="field-error-text">{fieldErrors.phone}</span>}
+            {fieldErrors.phone && (
+              <span className="field-error-text">{fieldErrors.phone}</span>
+            )}
           </div>
 
           {/* Number of Places */}
@@ -208,14 +225,18 @@ export default function BookingFormPage() {
               value={places}
               onChange={(e) => {
                 setPlaces(Number(e.target.value));
-                if (fieldErrors.places) setFieldErrors({ ...fieldErrors, places: undefined });
+                if (fieldErrors.places)
+                  setFieldErrors({ ...fieldErrors, places: undefined });
               }}
               disabled={isSubmitting}
             />
             <p className="form-hint">
-              Up to 4 per booking. Only {event.remaining} {event.remaining === 1 ? "place remains" : "places remain"}.
+              Up to 4 per booking. Only {event.remaining}{" "}
+              {event.remaining === 1 ? "place remains" : "places remain"}.
             </p>
-            {fieldErrors.places && <span className="field-error-text">{fieldErrors.places}</span>}
+            {fieldErrors.places && (
+              <span className="field-error-text">{fieldErrors.places}</span>
+            )}
           </div>
 
           {/* Form Actions */}

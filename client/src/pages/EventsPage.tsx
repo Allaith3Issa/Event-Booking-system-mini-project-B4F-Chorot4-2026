@@ -4,7 +4,7 @@ import StatusBadge from "../components/StatusBadge";
 export default function EventsPage() {
   const events = [
     {
-      id: "e1",
+      id: 1,
       title: "UI Design Basics",
       category: "Workshop",
       date: "Tue 13 Oct",
@@ -14,7 +14,7 @@ export default function EventsPage() {
       status: "Almost full",
     },
     {
-      id: "e2",
+      id: 2,
       title: "Jazz Under the Stars",
       category: "Concert",
       date: "Sat 17 Oct",
@@ -24,7 +24,7 @@ export default function EventsPage() {
       status: "Available",
     },
     {
-      id: "e3",
+      id: 3,
       title: "Product Talks: Launch Day",
       category: "Talk",
       date: "Thu 15 Oct",
@@ -34,7 +34,7 @@ export default function EventsPage() {
       status: "Full",
     },
     {
-      id: "e4",
+      id: 4,
       title: "React & TypeScript Lab",
       category: "Workshop",
       date: "Mon 19 Oct",
@@ -44,7 +44,7 @@ export default function EventsPage() {
       status: "Available",
     },
     {
-      id: "e5",
+      id: 5,
       title: "Photography Walk",
       category: "Meetup",
       date: "Sun 4 Oct",
@@ -60,13 +60,18 @@ export default function EventsPage() {
       <div className="page-header">
         <h1>Upcoming events</h1>
         <p className="page-subtitle">
-          Pick an event, see how many places are left, and book in under a minute.
+          Pick an event, see how many places are left, and book in under a
+          minute.
         </p>
       </div>
 
       <div className="events-grid">
         {events.map((evt) => (
-          <Link to={`/events/${evt.id}`} key={evt.id} className="event-card-item">
+          <Link
+            to={`/events/${evt.id}`}
+            key={evt.id}
+            className="event-card-item"
+          >
             <div className="event-card-top">
               <StatusBadge status={evt.status} />
               <span className="category-tag">{evt.category}</span>

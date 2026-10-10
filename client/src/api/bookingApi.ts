@@ -10,7 +10,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
  * Fetch event details by ID.
  * Returns EventItem or throws an Error with the readable message.
  */
-export async function getEventById(id: string): Promise<EventItem> {
+export async function getEventById(id: number | string): Promise<EventItem> {
   if (USE_MOCK) {
     return mockGetEventById(id);
   }
@@ -31,7 +31,7 @@ export async function getEventById(id: string): Promise<EventItem> {
  * Returns the created Booking or throws an Error with the exact server message.
  */
 export async function createBooking(payload: {
-  eventId: string;
+  eventId: number;
   customerName: string;
   customerPhone: string;
   places: number;

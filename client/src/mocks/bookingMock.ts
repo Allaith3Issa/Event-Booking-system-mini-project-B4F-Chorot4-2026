@@ -3,7 +3,7 @@ import { EventItem, Booking, ApiError } from "../types";
 // Seed events matching API Contract & UI Design specification
 const mockEvents: EventItem[] = [
   {
-    id: "e1",
+    id: 1,
     title: "UI Design Basics",
     description:
       "A hands-on introduction to layout, colour and typography. Bring a laptop; you will leave with a small interface you designed yourself.",
@@ -18,9 +18,10 @@ const mockEvents: EventItem[] = [
     status: "Almost full",
   },
   {
-    id: "e2",
+    id: 2,
     title: "Jazz Under the Stars",
-    description: "An open-air evening featuring live jazz performances with regional and international artists.",
+    description:
+      "An open-air evening featuring live jazz performances with regional and international artists.",
     date: "2026-10-17",
     time: "20:00",
     location: "Riverside Amphitheatre",
@@ -32,9 +33,10 @@ const mockEvents: EventItem[] = [
     status: "Available",
   },
   {
-    id: "e3",
+    id: 3,
     title: "Product Talks: Launch Day",
-    description: "Keynote talks by startup founders and product leaders on building scalable web products.",
+    description:
+      "Keynote talks by startup founders and product leaders on building scalable web products.",
     date: "2026-10-15",
     time: "17:30",
     location: "Main Hall",
@@ -46,9 +48,10 @@ const mockEvents: EventItem[] = [
     status: "Full",
   },
   {
-    id: "e4",
+    id: 4,
     title: "React & TypeScript Lab",
-    description: "Deep dive into React state, effects, TypeScript patterns and performant rendering.",
+    description:
+      "Deep dive into React state, effects, TypeScript patterns and performant rendering.",
     date: "2026-10-19",
     time: "10:00",
     location: "Lab 3",
@@ -60,9 +63,10 @@ const mockEvents: EventItem[] = [
     status: "Available",
   },
   {
-    id: "e5",
+    id: 5,
     title: "Photography Walk",
-    description: "Morning street photography tour through old town alleys and architecture.",
+    description:
+      "Morning street photography tour through old town alleys and architecture.",
     date: "2026-10-04",
     time: "09:00",
     location: "Old Town Square",
@@ -78,9 +82,9 @@ const mockEvents: EventItem[] = [
 // In-memory active bookings list
 const mockBookings: Booking[] = [
   {
-    id: "b100",
+    id: 100,
     code: "EV-1024",
-    eventId: "e1",
+    eventId: 1,
     event: { ...mockEvents[0] },
     customerName: "Rami Kabbani",
     customerPhone: "0944111222",
@@ -126,9 +130,12 @@ function updateEventAvailability(event: EventItem): EventItem {
 /**
  * Mock implementation of GET /events/:id
  */
-export async function mockGetEventById(id: string): Promise<EventItem> {
+export async function mockGetEventById(
+  id: number | string,
+): Promise<EventItem> {
   await new Promise((resolve) => setTimeout(resolve, 150));
-  const event = mockEvents.find((e) => e.id === id);
+  const numId = Number(id);
+  const event = mockEvents.find((e) => e.id === numId);
   if (!event) {
     const error: ApiError = { statusCode: 404, message: "Event not found" };
     throw error;
@@ -141,7 +148,7 @@ export async function mockGetEventById(id: string): Promise<EventItem> {
  * Enforces all checks in the exact order specified in API_CONTRACT.md section 3
  */
 export async function mockCreateBooking(payload: {
-  eventId: string;
+  eventId: number | string;
   customerName: string;
   customerPhone: string;
   places: number;
@@ -149,16 +156,23 @@ export async function mockCreateBooking(payload: {
   await new Promise((resolve) => setTimeout(resolve, 250));
 
   const { eventId, customerName, customerPhone, places } = payload;
+  const numEventId = Number(eventId);
 
   // 1. Validation checks
   if (!customerName || customerName.trim() === "") {
-    const error: ApiError = { statusCode: 400, message: "Customer name is required" };
+    const error: ApiError = {
+      statusCode: 400,
+      message: "Customer name is required",
+    };
     throw error;
   }
 
   const cleanPhone = normalizePhone(customerPhone || "");
   if (!cleanPhone || cleanPhone.length < 6) {
-    const error: ApiError = { statusCode: 400, message: "A valid phone number is required" };
+    const error: ApiError = {
+      statusCode: 400,
+      message: "A valid phone number is required",
+    };
     throw error;
   }
 
@@ -177,7 +191,7 @@ export async function mockCreateBooking(payload: {
   }
 
   // 2. Event exists check
-  const eventIndex = mockEvents.findIndex((e) => e.id === eventId);
+  const eventIndex = mockEvents.findIndex((e) => e.id === numEventId);
   if (eventIndex === -1) {
     const error: ApiError = { statusCode: 404, message: "Event not found" };
     throw error;
@@ -213,9 +227,9 @@ export async function mockCreateBooking(payload: {
   // 6. Duplicate phone check for active booking
   const existingActive = mockBookings.find(
     (b) =>
-      b.eventId === eventId &&
+      b.eventId === numEventId &&
       b.status === "Active" &&
-      normalizePhone(b.customerPhone) === cleanPhone
+      normalizePhone(b.customerPhone) === cleanPhone,
   );
   if (existingActive) {
     const error: ApiError = {
@@ -239,7 +253,7 @@ export async function mockCreateBooking(payload: {
 
   // Create booking object
   const newBooking: Booking = {
-    id: `b${Date.now()}`,
+    id: Date.now(),
     code: `EV-${Math.floor(1000 + Math.random() * 9000)}`,
     eventId: event.id,
     event: { ...event },

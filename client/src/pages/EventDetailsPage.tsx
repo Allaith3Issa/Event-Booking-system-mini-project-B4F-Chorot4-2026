@@ -26,7 +26,10 @@ export default function EventDetailsPage() {
       setEvent(data);
     } catch (err: unknown) {
       const errorObj = err as { statusCode?: number; message?: string };
-      if (errorObj?.statusCode === 404 || errorObj?.message?.toLowerCase().includes("not found")) {
+      if (
+        errorObj?.statusCode === 404 ||
+        errorObj?.message?.toLowerCase().includes("not found")
+      ) {
         setNotFound(true);
       } else {
         setError(errorObj?.message || "Failed to load event details");
@@ -63,7 +66,10 @@ export default function EventDetailsPage() {
   if (error || !event) {
     return (
       <div className="page-container">
-        <ErrorMessage message={error || "An unexpected error occurred"} onRetry={fetchEvent} />
+        <ErrorMessage
+          message={error || "An unexpected error occurred"}
+          onRetry={fetchEvent}
+        />
         <div style={{ marginTop: "1rem" }}>
           <Link to="/" className="back-link">
             &larr; Back to events
@@ -73,7 +79,8 @@ export default function EventDetailsPage() {
     );
   }
 
-  const isBookable = event.status !== "Full" && event.status !== "Past" && event.remaining > 0;
+  const isBookable =
+    event.status !== "Full" && event.status !== "Past" && event.remaining > 0;
 
   return (
     <div className="page-container event-details-page">
@@ -130,11 +137,15 @@ export default function EventDetailsPage() {
             </div>
             <div className="availability-card">
               <span className="availability-label">Remaining</span>
-              <span className="availability-number highlight">{event.remaining}</span>
+              <span className="availability-number highlight">
+                {event.remaining}
+              </span>
             </div>
             <div className="availability-card">
               <span className="availability-label">Booked</span>
-              <span className="availability-number">{event.bookingPercentage}%</span>
+              <span className="availability-number">
+                {event.bookingPercentage}%
+              </span>
             </div>
           </div>
 
@@ -142,7 +153,9 @@ export default function EventDetailsPage() {
           <div className="progress-bar-container">
             <div
               className={`progress-bar-fill status-${event.status.toLowerCase().replace(/\s+/g, "-")}`}
-              style={{ width: `${Math.min(100, Math.max(0, event.bookingPercentage))}%` }}
+              style={{
+                width: `${Math.min(100, Math.max(0, event.bookingPercentage))}%`,
+              }}
             />
           </div>
         </section>
