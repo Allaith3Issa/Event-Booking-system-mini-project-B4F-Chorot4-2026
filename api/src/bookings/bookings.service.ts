@@ -15,41 +15,13 @@ export class BookingsService {
   constructor(private readonly store: StoreService) {}
 
   createBooking(bookingData: CreateBookingData): Booking {
-    if (
-      typeof bookingData.customerName !== 'string' ||
-      !bookingData.customerName.trim()
-    ) {
-      throw new BadRequestException('Customer name is required');
-    }
-
-    if (
-      typeof bookingData.customerPhone !== 'string' ||
-      !bookingData.customerPhone.trim()
-    ) {
-      throw new BadRequestException('A valid phone number is required');
-    }
-
     const normalizedPhone = this.normalizePhone(bookingData.customerPhone);
 
     if (!/^\+?[0-9]{8,15}$/.test(normalizedPhone)) {
       throw new BadRequestException('A valid phone number is required');
     }
 
-    if (
-      !Number.isInteger(bookingData.places) ||
-      bookingData.places < 1 ||
-      bookingData.places > 4
-    ) {
-      throw new BadRequestException(
-        'Places must be a whole number between 1 and 4',
-      );
-    }
-
     const eventId = bookingData.eventId;
-
-    if (!Number.isInteger(eventId) || eventId <= 0) {
-      throw new NotFoundException('Event not found');
-    }
 
     const event = this.store.events.find((item) => item.id === eventId);
 

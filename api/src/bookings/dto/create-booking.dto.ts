@@ -1,4 +1,11 @@
-import { IsInt, IsNotEmpty, IsString, Max, Min } from 'class-validator';
+import {
+  IsInt,
+  IsNotEmpty,
+  IsString,
+  Max,
+  Min,
+  Matches,
+} from 'class-validator';
 
 export class CreateBookingDto {
   @IsString()
@@ -7,6 +14,7 @@ export class CreateBookingDto {
 
   @IsString()
   @IsNotEmpty({ message: 'A valid phone number is required' })
+  @Matches(/^\+?[0-9]{8,15}$/, { message: 'A valid phone number is required' })
   customerPhone!: string;
 
   @IsInt({
