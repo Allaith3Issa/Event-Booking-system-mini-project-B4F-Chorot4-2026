@@ -15,8 +15,4 @@ export class EventsController {
   findOne(@Param('id') id: string) {
     return this.EventsService.findOne(Number(id));
   }
-  @Get('category/:category')
-  findCategory(@Param('category') category: string) {
-    return this.EventsService.findCategory(category);
-  }
 }

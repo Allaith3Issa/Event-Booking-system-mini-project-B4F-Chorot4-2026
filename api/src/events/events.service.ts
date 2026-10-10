@@ -61,13 +61,4 @@ export class EventsService {
 
     return event;
   }
-  findCategory(category: string): EventItem[] {
-    const eventsByCategory: EventItem[] = this.store.events.filter(
-      (candidate) => candidate.category === category,
-    );
-    if (!eventsByCategory) {
-      throw new NotFoundException(`No events found with category ${category}.`);
-    }
-    return eventsByCategory;
-  }
 }
