@@ -1,4 +1,4 @@
-import {EventItem, ApiError} from "../types";
+import type { EventItem, ApiError, SortBy } from "../types";
 
 const BASE_URL = "http://localhost:3000";
 
@@ -7,6 +7,8 @@ export interface GetEventsParams {
   date?: string;
   availableOnly?: boolean;
   includePast?: boolean;
+  sortBy?: SortBy;
+  asc?: boolean;
 }
 
 export async function getEvents(
@@ -25,6 +27,12 @@ export async function getEvents(
   }
   if (params?.includePast) {
     queryParams.append("includePast", "true");
+  }
+  if (params?.sortBy) {
+    queryParams.append("sortBy", params.sortBy);
+  }
+  if (params?.asc !== undefined) {
+    queryParams.append("asc", String(params.asc));
   }
 
   const response = await fetch(`${BASE_URL}/events?${queryParams.toString()}`);
@@ -57,7 +65,7 @@ export async function getEventCategories(): Promise<string[]> {
     return Array.from(new Set(events.map((e) => e.category)));
   } catch (error) {
     console.log(error);
-    
+
     return ["Workshop", "Talk", "Concert", "Sports", "Meetup"];
   }
 }

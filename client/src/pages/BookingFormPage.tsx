@@ -1,7 +1,7 @@
 import {useEffect, useState, useCallback, FormEvent} from "react";
 import {useParams, useNavigate, Link} from "react-router-dom";
 import {EventItem} from "../types";
-import { getEventById } from "../api/eventsAPI";
+import { getEventById } from "../api/eventsApi";
 import { createBooking } from "../api/manageAPI";
 import LoadingMessage from "../components/LoadingMessage";
 import ErrorMessage from "../components/ErrorMessage";
