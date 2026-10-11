@@ -4,13 +4,13 @@ import { EventsQueryDto } from './dto/events.dto';
 import { hasStarted } from '../common/helpers/time';
 import { StoreService } from '../store/store.service';
 import { computeAvailability } from '../common/helpers/availability';
+import eventSortBy from '../common/helpers/eventSortBy';
 
 @Injectable()
 export class EventsService {
   constructor(private readonly store: StoreService) {}
   private readonly events: EventItem[] = this.store.events;
   private readonly now: Date = new Date();
-
   findAll(filters: EventsQueryDto): EventItem[] {
     let filteredEvents: EventItem[] = this.store.events;
 
@@ -38,15 +38,11 @@ export class EventsService {
           : true,
       );
     }
-    filteredEvents.sort((a, b) => {
-      if (a.date < b.date) return -1;
-      if (a.date > b.date) return 1;
-
-      if (a.time < b.time) return -1;
-      if (a.time > b.time) return 1;
-
-      return 0;
-    });
+    if (filters.sortBy !== undefined) {
+      let asc = true;
+      if (filters.asc !== undefined && filters.asc === false) asc = false;
+      eventSortBy(filteredEvents, filters.sortBy, asc);
+    }
     if (!filteredEvents.length) {
       throw new NotFoundException('No events found');
     }
