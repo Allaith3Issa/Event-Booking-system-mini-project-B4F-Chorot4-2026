@@ -3,7 +3,7 @@ import { EventItem, SortBy } from '../../types';
 export default function eventSortBy(
   events: EventItem[],
   sortBy: SortBy,
-  asc: number,
+  asc: boolean,
 ) {
   events.sort((a, b) => {
     if (sortBy === 'date') {

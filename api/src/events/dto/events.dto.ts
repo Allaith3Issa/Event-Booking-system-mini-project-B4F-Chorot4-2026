@@ -42,7 +42,7 @@ export class EventsQueryDto {
 
   @IsOptional()
   @Transform(({ value }) =>
-    value === 'true' || '1' ? true : value === 'false' || '0' ? false : value,
+    value === 'true' ? true : value === 'false' ? false : value,
   )
   @IsBoolean()
   includePast?: boolean;
@@ -56,7 +56,7 @@ export class EventsQueryDto {
 
   @IsOptional()
   @Transform(({ value }) =>
-    value === 'true' || '1' ? true : value === 'false' || '0' ? false : value,
+    value === 'true' ? true : value === 'false' ? false : value,
   )
   @IsBoolean()
   asc?: boolean;

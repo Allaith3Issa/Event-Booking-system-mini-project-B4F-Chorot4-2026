@@ -39,8 +39,9 @@ export class EventsService {
       );
     }
     if (filters.sortBy !== undefined) {
-      if (filters.asc === undefined) filters.asc = true;
-      eventSortBy(filteredEvents, filters.sortBy, Number(filters.asc));
+      let asc = true;
+      if (filters.asc !== undefined && filters.asc === false) asc = false;
+      eventSortBy(filteredEvents, filters.sortBy, asc);
     }
     if (!filteredEvents.length) {
       throw new NotFoundException('No events found');

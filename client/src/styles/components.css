@@ -1,4 +1,3 @@
-/* src/styles/components.css */
 .btn-primary, .primary-button {
   background-color: var(--primary);
   color: white;
@@ -33,13 +32,12 @@
 }
 
 .btn-secondary:hover {
-  background-color: var(--bg-main);
-  border-color: var(--text-light);
+  background-color: var(--border-color);
 }
 
 .cancel-button {
-  background-color: #fee2e2;
-  color: #ef4444;
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #f87171;
   padding: 0.75rem 1.5rem;
   border-radius: var(--radius-md);
   font-weight: 600;
@@ -47,7 +45,7 @@
 }
 
 .cancel-button:hover:not(:disabled) {
-  background-color: #fca5a5;
+  background-color: #ef4444;
   color: white;
 }
 
@@ -80,11 +78,11 @@
 }
 
 .input-error {
-  border-color: #ef4444;
+  border-color: #f87171;
 }
 
 .field-error-text {
-  color: #ef4444;
+  color: #f87171;
   font-size: 0.875rem;
   margin-top: 0.25rem;
   display: block;
@@ -113,17 +111,43 @@
   transition: var(--transition);
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .event-card:hover {
   box-shadow: var(--shadow-hover);
   transform: translateY(-4px);
-  border-color: var(--primary-light);
+  border-color: var(--primary);
 }
 
 .event-card--past {
   opacity: 0.75;
-  filter: grayscale(0.8);
+  filter: grayscale(0.6);
+}
+
+.event-card::before {
+  content: "";
+  position: absolute;
+  bottom: 5.75rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  border-bottom: 2px dashed rgba(225, 29, 72, 0.4);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.event-card::after {
+  content: "";
+  position: absolute;
+  bottom: calc(5.75rem - 12px);
+  left: -1px;
+  right: -1px;
+  height: 24px;
+  background-image: 
+    radial-gradient(circle at 0 50%, var(--bg-main) 12px, transparent 13px),
+    radial-gradient(circle at 100% 50%, var(--bg-main) 12px, transparent 13px);
+  z-index: 2;
+  pointer-events: none;
 }
 
 .event-card__top {
@@ -134,7 +158,7 @@
 }
 
 .event-card__category {
-  color: var(--primary);
+  color: var(--primary-hover);
   font-weight: 600;
   font-size: 0.875rem;
 }
@@ -187,13 +211,15 @@
   border-radius: var(--radius-md);
   font-weight: 700;
   transition: var(--transition);
+  position: relative;
+  z-index: 3;
 }
 
 .event-card:hover .event-card__link,
 .event-card__link:hover {
   background: var(--primary);
   color: white;
-  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.25);
+  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.4);
   transform: translateY(-2px);
 }
 
@@ -209,15 +235,14 @@
   padding: 0.875rem 1rem;
   border: 2px solid var(--border-color);
   border-radius: var(--radius-md);
-  background-color: var(--bg-main);
+  background-color: var(--input-bg);
   transition: var(--transition);
   font-size: 1rem;
 }
 
 .search-form input:focus {
   border-color: var(--primary);
-  background-color: #fff;
-  box-shadow: 0 0 0 4px var(--primary-light);
+  box-shadow: 0 0 0 4px var(--input-focus-ring);
   outline: none;
 }
 
@@ -301,4 +326,57 @@
   background: var(--bg-main);
   padding: 1rem;
   border-radius: var(--radius-md);
+}
+
+.error-state-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  width: 100%;
+}
+
+.error-state-card {
+  background: var(--bg-card);
+  padding: 3rem 2rem;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-color);
+  text-align: center;
+  max-width: 450px;
+  width: 100%;
+}
+
+.error-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.error-icon svg {
+  width: 64px;
+  height: 64px;
+  stroke: var(--primary);
+  background: var(--primary-light);
+  border-radius: 50%;
+  padding: 12px;
+}
+
+.error-state-card h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 0.75rem;
+  margin-top: 0;
+}
+
+.error-message-text {
+  color: var(--text-muted);
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  margin-top: 0;
+}
+
+.error-state-card .btn-primary {
+  width: 100%;
 }
