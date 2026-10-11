@@ -3,7 +3,6 @@ import { EventItem } from '../types';
 import { EventsQueryDto } from './dto/events.dto';
 import { hasStarted } from '../common/helpers/time';
 import { StoreService } from '../store/store.service';
-import { computeAvailability } from '../common/helpers/availability';
 import eventSortBy from '../common/helpers/eventSortBy';
 
 @Injectable()
@@ -17,8 +16,7 @@ export class EventsService {
     if (filters.availableOnly !== undefined && filters.availableOnly === true) {
       filteredEvents = filteredEvents.filter(
         (candidate) =>
-          computeAvailability(candidate, this.store.bookings, this.now) !==
-          null,
+          candidate.remaining > 0 && hasStarted(candidate, this.now) === false,
       );
     }
     if (filters.category !== undefined) {
