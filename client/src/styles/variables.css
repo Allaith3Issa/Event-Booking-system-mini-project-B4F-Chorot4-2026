@@ -1,31 +1,31 @@
 :root {
-  --bg-main: #f8fafc;
-  --bg-card: #ffffff;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --text-light: #94a3b8;
+  --bg-main: #0f172a; 
+  --bg-card: #1e293b; 
+  --text-main: #f8fafc; 
+  --text-muted: #94a3b8; 
+  --text-light: #64748b; 
   
   --primary: #e11d48;
-  --primary-hover: #be123c;
-  --primary-light: #ffe4e6;
+  --primary-hover: #f43f5e; 
+  --primary-light: rgba(225, 29, 72, 0.15); 
   
-  --status-available-bg: #dcfce7;
-  --status-available-text: #166534;
-  --status-almost-bg: #fef9c3;
-  --status-almost-text: #854d0e;
-  --status-full-bg: #fee2e2;
-  --status-full-text: #991b1b;
-  --status-past-bg: #f1f5f9;
-  --status-past-text: #475569;
+  --status-available-bg: rgba(22, 101, 52, 0.4);
+  --status-available-text: #4ade80;
+  --status-almost-bg: rgba(133, 77, 14, 0.4);
+  --status-almost-text: #facc15;
+  --status-full-bg: rgba(153, 27, 27, 0.4);
+  --status-full-text: #f87171;
+  --status-past-bg: rgba(71, 85, 105, 0.4);
+  --status-past-text: #cbd5e1;
 
-  --border-color: #e2e8f0;
-  --input-bg: #ffffff;
-  --input-focus-ring: rgba(225, 29, 72, 0.2);
+  --border-color: #334155; 
+  --input-bg: #0f172a;
+  --input-focus-ring: rgba(225, 29, 72, 0.4);
 
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
 
   --radius-md: 8px;
   --radius-lg: 12px;

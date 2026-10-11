@@ -247,6 +247,7 @@
 .manage-booking:has(.booking-card) {
   max-width: 1100px;
   grid-template-columns: 1fr 1fr;
+  align-items: stretch;
 }
 
 .manage-booking .page-heading {
@@ -300,7 +301,34 @@
   }
 }
 
-.manage-booking .success-message, 
+.success-message {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: var(--status-available-bg);
+  color: var(--status-available-text);
+  border: 1px solid #bbf7d0;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  font-weight: 600;
+  max-width: 400px;
+  animation: 
+    toastSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+    toastFadeOut 0.5s cubic-bezier(0.16, 1, 0.3, 1) 4s forwards;
+}
+
+@keyframes toastSlideIn {
+  0% { transform: translateX(120%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes toastFadeOut {
+  0% { transform: translateX(0); opacity: 1; }
+  100% { transform: translateX(120%); opacity: 0; visibility: hidden; }
+}
+
 .manage-booking .error-message, 
 .manage-booking .loading-message {
   grid-column: 1 / -1;
@@ -310,18 +338,6 @@
   text-align: center;
   padding: 1rem;
   border-radius: var(--radius-md);
-}
-
-.manage-booking:has(.booking-card) .success-message, 
-.manage-booking:has(.booking-card) .error-message, 
-.manage-booking:has(.booking-card) .loading-message {
-  grid-column: 1 / 2;
-}
-
-.success-message {
-  background-color: var(--status-available-bg);
-  color: var(--status-available-text);
-  border: 1px solid #bbf7d0;
 }
 
 .past-toggle {
