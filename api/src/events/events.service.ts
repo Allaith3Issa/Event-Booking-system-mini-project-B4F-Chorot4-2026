@@ -9,14 +9,14 @@ import eventSortBy from '../common/helpers/eventSortBy';
 export class EventsService {
   constructor(private readonly store: StoreService) {}
   private readonly events: EventItem[] = this.store.events;
-  private readonly now: Date = new Date();
   findAll(filters: EventsQueryDto): EventItem[] {
     let filteredEvents: EventItem[] = this.store.events;
+    const now = new Date();
 
     if (filters.availableOnly !== undefined && filters.availableOnly === true) {
       filteredEvents = filteredEvents.filter(
         (candidate) =>
-          candidate.remaining > 0 && hasStarted(candidate, this.now) === false,
+          candidate.remaining > 0 && hasStarted(candidate, now) === false,
       );
     }
     if (filters.category !== undefined) {
@@ -32,17 +32,18 @@ export class EventsService {
     if (filters.includePast !== undefined) {
       filteredEvents = filteredEvents.filter((candidate) =>
         filters.includePast === false
-          ? hasStarted(candidate, this.now) === false
+          ? hasStarted(candidate, now) === false
           : true,
+      );
+    } else {
+      filteredEvents = filteredEvents.filter(
+        (candidate) => hasStarted(candidate, now) === false,
       );
     }
     if (filters.sortBy !== undefined) {
       let asc = true;
       if (filters.asc !== undefined && filters.asc === false) asc = false;
       eventSortBy(filteredEvents, filters.sortBy, asc);
-    }
-    if (!filteredEvents.length) {
-      throw new NotFoundException('No events found');
     }
     return filteredEvents;
   }
