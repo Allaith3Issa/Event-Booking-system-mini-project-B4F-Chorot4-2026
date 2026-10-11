@@ -1,5 +1,16 @@
 export type EventStatus = 'Available' | 'Almost full' | 'Full' | 'Past';
+export type EventsCategories =
+  'Workshop' | 'Talk' | 'Concert' | 'Sports' | 'Meetup';
+export const ALLOWED_EVENTS_CATEGORIES: EventsCategories[] = [
+  'Workshop',
+  'Talk',
+  'Concert',
+  'Sports',
+  'Meetup',
+];
 export type BookingStatus = 'Active' | 'Cancelled';
+export type SortBy = 'date' | 'remaining' | 'popularity';
+export const SORT_BY_VERDICTS: SortBy[] = ['date', 'remaining', 'popularity'];
 
 export interface EventItem {
   id: number;
@@ -9,7 +20,7 @@ export interface EventItem {
   date: string; // "YYYY-MM-DD"
   time: string; // "HH:mm" (24h)
   location: string;
-  category: string; // Workshop | Talk | Concert | Sports | Meetup ...
+  category: EventsCategories; // Workshop | Talk | Concert | Sports | Meetup ...
   capacity: number;
   booked: number; // computed from Active bookings only
   remaining: number; // capacity - booked

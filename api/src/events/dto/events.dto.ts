@@ -2,15 +2,25 @@ import { Transform } from 'class-transformer';
 import {
   IsBoolean,
   IsDateString,
+  IsIn,
   IsOptional,
   IsString,
   Matches,
 } from 'class-validator';
+import {
+  ALLOWED_EVENTS_CATEGORIES,
+  EventsCategories,
+  SORT_BY_VERDICTS,
+  SortBy,
+} from '../../types';
 
 export class EventsQueryDto {
   @IsOptional()
   @IsString()
-  category?: string;
+  @IsIn(ALLOWED_EVENTS_CATEGORIES, {
+    message: `Category must be one of the following: ${ALLOWED_EVENTS_CATEGORIES.join(', ')}`,
+  })
+  category?: EventsCategories;
 
   @IsOptional()
   @IsString()
@@ -32,8 +42,22 @@ export class EventsQueryDto {
 
   @IsOptional()
   @Transform(({ value }) =>
-    value === 'true' ? true : value === 'false' ? false : value,
+    value === 'true' || '1' ? true : value === 'false' || '0' ? false : value,
   )
   @IsBoolean()
   includePast?: boolean;
+
+  @IsOptional()
+  @IsString()
+  @IsIn(SORT_BY_VERDICTS, {
+    message: `sortBy must be one of the following: ${SORT_BY_VERDICTS.join(', ')}`,
+  })
+  sortBy?: SortBy;
+
+  @IsOptional()
+  @Transform(({ value }) =>
+    value === 'true' || '1' ? true : value === 'false' || '0' ? false : value,
+  )
+  @IsBoolean()
+  asc?: boolean;
 }
