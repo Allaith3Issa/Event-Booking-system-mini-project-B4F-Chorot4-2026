@@ -3,7 +3,6 @@ interface ErrorMessageProps {
   onRetry?: () => void;
 }
 
-import React from "react";
 
 interface ErrorMessageProps {
   message: string;

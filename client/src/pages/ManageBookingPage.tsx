@@ -3,7 +3,7 @@ import ErrorMessage from "../components/ErrorMessage";
 import LoadingMessage from "../components/LoadingMessage";
 import BookingSearchForm from "../components/BookingSearchForm";
 import BookingCard from "../components/BookingCard";
-import {cancelBooking, findBooking} from "../api/manageApi";
+import {cancelBooking, findBooking} from "../api/manageAPI";
 import type {Booking} from "../types";
 
 function ManageBookingPage() {

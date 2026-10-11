@@ -11,6 +11,7 @@ export const MOCK_CATEGORIES: string[] = [
 export const MOCK_EVENTS: EventItem[] = [
   {
     id: 1,
+    imageUrl: "http://localhost:3000/assets/images/placeholder.jpg",
     title: "UI Design Basics",
     description: "A hands-on introduction to interface design.",
     date: "2026-10-15",
@@ -25,6 +26,7 @@ export const MOCK_EVENTS: EventItem[] = [
   },
   {
     id: 2,
+    imageUrl: "http://localhost:3000/assets/images/placeholder.jpg",
     title: "React in Depth",
     description: "Advanced React patterns and hooks.",
     date: "2026-10-20",
@@ -39,6 +41,7 @@ export const MOCK_EVENTS: EventItem[] = [
   },
   {
     id: 3,
+    imageUrl: "http://localhost:3000/assets/images/placeholder.jpg",
     title: "AI in Daily Life",
     description: "A talk about AI in everyday products.",
     date: "2026-10-22",
@@ -53,6 +56,7 @@ export const MOCK_EVENTS: EventItem[] = [
   },
   {
     id: 4,
+    imageUrl: "http://localhost:3000/assets/images/placeholder.jpg",
     title: "Jazz Night",
     description: "Live jazz with local artists.",
     date: "2026-10-25",
@@ -67,6 +71,7 @@ export const MOCK_EVENTS: EventItem[] = [
   },
   {
     id: 5,
+    imageUrl: "http://localhost:3000/assets/images/placeholder.jpg",
     title: "Startup Meetup",
     description: "Meet founders and investors.",
     date: "2026-10-28",
@@ -81,6 +86,7 @@ export const MOCK_EVENTS: EventItem[] = [
   },
   {
     id: 6,
+    imageUrl: "http://localhost:3000/assets/images/placeholder.jpg",
     title: "Node.js Workshop",
     description: "Build a REST API with Node.js.",
     date: "2026-10-30",
@@ -95,6 +101,7 @@ export const MOCK_EVENTS: EventItem[] = [
   },
   {
     id: 7,
+    imageUrl: "http://localhost:3000/assets/images/placeholder.jpg",
     title: "Football Match",
     description: "Friendly football match.",
     date: "2026-09-01",
@@ -109,6 +116,7 @@ export const MOCK_EVENTS: EventItem[] = [
   },
   {
     id: 8,
+    imageUrl: "http://localhost:3000/assets/images/placeholder.jpg",
     title: "Classic Concert",
     description: "Orchestra night.",
     date: "2026-09-15",

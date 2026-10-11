@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { EventItem, ApiError } from "../types";
-import { getEvents, getEventCategories } from "../api/eventsAPI";
+import { getEvents, getEventCategories } from "../api/eventsApi";
 import { EventCard } from "../components/EventCard";
 import { FiltersBar } from "../components/FiltersBar";
 import type { Filters } from "../components/FiltersBar";
@@ -16,6 +16,8 @@ export default function EventsPage() {
     category: "",
     date: "",
     availableOnly: false,
+    sortBy: "date",
+    asc: true,
   });
 
   const [showPast, setShowPast] = useState(false);
@@ -32,6 +34,8 @@ export default function EventsPage() {
         date: filters.date || undefined,
         availableOnly: filters.availableOnly || undefined,
         includePast: showPast || undefined,
+        sortBy: filters.sortBy,
+        asc: filters.asc,
       });
 
       setUpcoming(data.filter((e) => e.status !== "Past"));
@@ -51,10 +55,8 @@ export default function EventsPage() {
 
   useEffect(() => {
     fetchEvents();
-   
   }, [filters, showPast]);
 
-  
   const hasActiveFilters = !!(
     filters.category ||
     filters.date ||
@@ -62,7 +64,13 @@ export default function EventsPage() {
   );
 
   const clearFilters = () => {
-    setFilters({ category: "", date: "", availableOnly: false });
+    setFilters({
+      category: "",
+      date: "",
+      availableOnly: false,
+      sortBy: "date",
+      asc: true,
+    });
   };
 
   const retry = () => {
@@ -75,7 +83,8 @@ export default function EventsPage() {
         <div className="events-hero__inner">
           <h1>Upcoming Events</h1>
           <p className="events-page__subtitle">
-            Pick an event, see how many places are left, and book in under a minute.
+            Pick an event, see how many places are left, and book in under a
+            minute.
           </p>
         </div>
 

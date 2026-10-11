@@ -1,5 +1,7 @@
 .events-hero {
-  background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), url('../assets/bg.jfif') center/cover no-repeat;
+  background:
+    linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)),
+    url("../assets/bg.jfif") center/cover no-repeat;
   color: white;
   border-radius: 0;
   margin: 0;
@@ -83,6 +85,7 @@
   border-color: var(--primary);
   box-shadow: 0 0 0 4px var(--input-focus-ring);
   background-color: #fff;
+  color: black;
 }
 
 .filters-bar__check {
@@ -132,21 +135,24 @@
   margin-top: 2rem;
 }
 
-.event-info-grid, .availability-grid {
+.event-info-grid,
+.availability-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
   margin: 2rem 0;
 }
 
-.info-item, .availability-card {
+.info-item,
+.availability-card {
   background: var(--bg-main);
   padding: 1.5rem;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-color);
 }
 
-.info-label, .availability-label {
+.info-label,
+.availability-label {
   display: block;
   font-size: 0.875rem;
   color: var(--text-muted);
@@ -155,7 +161,8 @@
   letter-spacing: 0.05em;
 }
 
-.info-value, .availability-number {
+.info-value,
+.availability-number {
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--text-main);
@@ -314,22 +321,35 @@
   z-index: 1000;
   font-weight: 600;
   max-width: 400px;
-  animation: 
+  animation:
     toastSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards,
     toastFadeOut 0.5s cubic-bezier(0.16, 1, 0.3, 1) 4s forwards;
 }
 
 @keyframes toastSlideIn {
-  0% { transform: translateX(120%); opacity: 0; }
-  100% { transform: translateX(0); opacity: 1; }
+  0% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @keyframes toastFadeOut {
-  0% { transform: translateX(0); opacity: 1; }
-  100% { transform: translateX(120%); opacity: 0; visibility: hidden; }
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(120%);
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
-.manage-booking .error-message, 
+.manage-booking .error-message,
 .manage-booking .loading-message {
   grid-column: 1 / -1;
   width: 100%;
