@@ -1,7 +1,7 @@
 export type EventStatus = "Available" | "Almost full" | "Full" | "Past";
 export type BookingStatus = "Active" | "Cancelled";
 
-export type SortBy = "date" | "remaining" | "popularity";
+export type SortBy = "default"|"date" | "remaining" | "popularity";
 
 export interface EventItem {
   id: number;

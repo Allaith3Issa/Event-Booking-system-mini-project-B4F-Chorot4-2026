@@ -16,7 +16,7 @@ export default function EventsPage() {
     category: "",
     date: "",
     availableOnly: false,
-    sortBy: "date",
+    sortBy: "default",
     asc: true,
   });
 
@@ -68,7 +68,7 @@ export default function EventsPage() {
       category: "",
       date: "",
       availableOnly: false,
-      sortBy: "date",
+      sortBy: "default",
       asc: true,
     });
   };
