@@ -1,3 +1,4 @@
+import { Transform } from 'class-transformer';
 import {
   IsInt,
   IsNotEmpty,
@@ -12,9 +13,14 @@ export class CreateBookingDto {
   @IsNotEmpty({ message: 'Customer name is required' })
   customerName!: string;
 
-  @IsString()
+  @Transform(({ value }) =>
+    typeof value === 'string' ? value.replace(/[\s-]/g, '') : value,
+  )
+  @IsString({ message: 'A valid phone number is required' })
   @IsNotEmpty({ message: 'A valid phone number is required' })
-  @Matches(/^\+?[0-9]{8,15}$/, { message: 'A valid phone number is required' })
+  @Matches(/^\+?[0-9]{8,15}$/, {
+    message: 'A valid phone number is required',
+  })
   customerPhone!: string;
 
   @IsInt({
