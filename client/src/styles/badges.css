@@ -1,0 +1,13 @@
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.status-badge--Available, .status-Available { background: var(--status-available-bg); color: var(--status-available-text); }
+.status-badge--Almost-full, .status-Almost-full { background: var(--status-almost-bg); color: var(--status-almost-text); }
+.status-badge--Full, .status-Full { background: var(--status-full-bg); color: var(--status-full-text); }
+.status-badge--Past, .status-Past { background: var(--status-past-bg); color: var(--status-past-text); }
