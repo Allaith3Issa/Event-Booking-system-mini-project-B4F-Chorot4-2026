@@ -28,11 +28,12 @@ export async function getEvents(
   if (params?.includePast) {
     queryParams.append("includePast", "true");
   }
-  if (params?.sortBy) {
+
+  if (params?.sortBy && params.sortBy !== "default") {
     queryParams.append("sortBy", params.sortBy);
-  }
-  if (params?.asc !== undefined) {
-    queryParams.append("asc", String(params.asc));
+    if (params.asc !== undefined) {
+      queryParams.append("asc", String(params.asc));
+    }
   }
 
   const response = await fetch(`${BASE_URL}/events?${queryParams.toString()}`);

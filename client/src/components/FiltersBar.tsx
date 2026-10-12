@@ -14,7 +14,9 @@ interface FiltersBarProps {
   onChange: (next: Filters) => void;
   onClear: () => void;
 }
+
 const sortByValues = [
+  
   { value: "date:false", text: "Newest" },
   { value: "date:true", text: "Oldest" },
   { value: "remaining:true", text: "Least remaining" },
@@ -22,6 +24,7 @@ const sortByValues = [
   { value: "popularity:true", text: "Least popularity" },
   { value: "popularity:false", text: "Most popularity" },
 ];
+
 export function FiltersBar({
   categories,
   filters,
@@ -30,6 +33,7 @@ export function FiltersBar({
 }: FiltersBarProps) {
   return (
     <div className="filters-bar">
+    
       <select
         value={filters.category}
         onChange={(e) => onChange({ ...filters, category: e.target.value })}
@@ -41,31 +45,52 @@ export function FiltersBar({
           </option>
         ))}
       </select>
+
+   
       <select
-        value={`${filters.sortBy}:${filters.asc}`}
+        value={
+          filters.sortBy === "default"
+            ? "default"
+            : `${filters.sortBy}:${filters.asc}`
+        }
         onChange={(e) => {
-          const values = e.target.value.split(":");
-          const sortBy = values[0];
+          const value = e.target.value;
+
+        
+          if (value === "default") {
+            onChange({ ...filters, sortBy: "default", asc: true });
+            return;
+          }
+
+        
+          const [sortBy, asc] = value.split(":");
           if (
             sortBy === "date" ||
             sortBy === "remaining" ||
             sortBy === "popularity"
           ) {
-            onChange({ ...filters, sortBy, asc: values[1] === "true" });
+            onChange({ ...filters, sortBy, asc: asc === "true" });
           }
         }}
       >
-        {sortByValues.map((e) => {
-          return <option value={e.value}>{e.text}</option>;
-        })}
+        
+        <option value="default">Default</option>
+
+        {sortByValues.map((e) => (
+          <option key={e.value} value={e.value}>
+            {e.text}
+          </option>
+        ))}
       </select>
 
+   
       <input
         type="date"
         value={filters.date}
         onChange={(e) => onChange({ ...filters, date: e.target.value })}
       />
 
+     
       <label className="filters-bar__check">
         <input
           type="checkbox"
@@ -77,6 +102,7 @@ export function FiltersBar({
         Only with available places
       </label>
 
+    
       <button type="button" onClick={onClear}>
         Clear filters
       </button>
