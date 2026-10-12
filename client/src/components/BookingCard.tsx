@@ -12,6 +12,7 @@ function BookingCard({booking, isCancelling, onCancel}: BookingCardProps) {
     <article className="booking-card" aria-live="polite">
       <div className="booking-card-heading">
         <div>
+          <p>sdgsfdg</p>
           <p className="eyebrow">Booking code</p>
           <h2>{booking.code}</h2>
         </div>
