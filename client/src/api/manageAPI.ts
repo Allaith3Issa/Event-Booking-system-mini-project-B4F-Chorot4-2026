@@ -1,7 +1,6 @@
 import type {Booking, ApiError} from "../types";
 
-const BASE_URL = "http://localhost:3000";
-
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 export interface CreateBookingPayload {
   eventId: number;
   customerName: string;
@@ -12,7 +11,7 @@ export interface CreateBookingPayload {
 export async function createBooking(
   data: CreateBookingPayload,
 ): Promise<Booking> {
-  const response = await fetch(`${BASE_URL}/bookings`, {
+  const response = await fetch(`${API_BASE_URL}/bookings`, {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(data),
@@ -32,7 +31,7 @@ export async function findBooking(
 ): Promise<Booking> {
   const queryParams = new URLSearchParams({phone, code});
   const response = await fetch(
-    `${BASE_URL}/bookings/find?${queryParams.toString()}`,
+    `${API_BASE_URL}/bookings/find?${queryParams.toString()}`,
     {
       method: "GET",
       headers: {"Content-Type": "application/json"},
@@ -51,7 +50,7 @@ export async function cancelBooking(
   id: number | string,
   phone: string,
 ): Promise<Booking> {
-  const response = await fetch(`${BASE_URL}/bookings/${id}/cancel`, {
+  const response = await fetch(`${API_BASE_URL}/bookings/${id}/cancel`, {
     method: "PATCH",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({phone}),
