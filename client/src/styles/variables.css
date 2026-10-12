@@ -1,27 +1,35 @@
 :root {
-  --bg-main: #0f172a; 
-  --bg-card: #1e293b; 
+  /* ألوان الخلفيات والنصوص (Navy Blue) */
+  --bg-main: #020617; 
+  --bg-card: #0f172a; 
   --text-main: #f8fafc; 
   --text-muted: #94a3b8; 
   --text-light: #64748b; 
   
-  --primary: #e11d48;
-  --primary-hover: #f43f5e; 
-  --primary-light: rgba(225, 29, 72, 0.15); 
+  /* اللون الرئيسي (الملكي - Dark Purple) */
+  --primary: #8b5cf6;
+  --primary-hover: #a78bfa; 
+  --primary-light: rgba(139, 92, 246, 0.15); 
   
-  --status-available-bg: rgba(22, 101, 52, 0.4);
+  /* ألوان حالات الحجز (هادئة ومينيمالية) */
+  --status-available-bg: rgba(74, 222, 128, 0.1);
   --status-available-text: #4ade80;
-  --status-almost-bg: rgba(133, 77, 14, 0.4);
+  
+  --status-almost-bg: rgba(250, 204, 21, 0.1);
   --status-almost-text: #facc15;
-  --status-full-bg: rgba(153, 27, 27, 0.4);
+  
+  --status-full-bg: rgba(248, 113, 113, 0.1);
   --status-full-text: #f87171;
-  --status-past-bg: rgba(71, 85, 105, 0.4);
-  --status-past-text: #cbd5e1;
+  
+  --status-past-bg: rgba(148, 163, 184, 0.1);
+  --status-past-text: #94a3b8;
 
-  --border-color: #334155; 
-  --input-bg: #0f172a;
-  --input-focus-ring: rgba(225, 29, 72, 0.4);
+  /* الحدود وحقول الإدخال */
+  --border-color: #1e293b; 
+  --input-bg: #020617;
+  --input-focus-ring: rgba(139, 92, 246, 0.4);
 
+  /* الظلال والانتقالات */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);

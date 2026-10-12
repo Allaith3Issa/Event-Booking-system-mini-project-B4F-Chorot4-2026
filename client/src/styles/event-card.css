@@ -1,0 +1,199 @@
+.event-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+.event-card--past {
+  opacity: 0.65;
+}
+
+.event-card__image-wrapper {
+  position: static;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  background: var(--bg-main);
+}
+
+.event-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.event-card:hover .event-card__image {
+  transform: scale(1.05);
+}
+
+.event-card--past .event-card__image {
+  filter: grayscale(0.7);
+}
+
+.event-card__badge {
+  position: absolute;
+  top: calc(180px + 1.25rem);
+  left: 1.25rem;
+  z-index: 2;
+}
+
+.event-card__body {
+  padding: 1.25rem 1.25rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+}
+
+.event-card__top {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 1rem;
+  min-height: 26px;
+}
+
+.event-card__category {
+  color: var(--primary-hover);
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-align: right;
+}
+
+.event-card__title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.4;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.8em;
+}
+
+.event-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.event-card__icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  color: var(--primary);
+}
+
+.event-card__progress {
+  height: 5px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 0.25rem;
+}
+
+.event-card__progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.8s ease-out;
+}
+
+.event-card__progress-fill--Available { background: var(--status-available-text); }
+.event-card__progress-fill--Almost-full { background: var(--status-almost-text); }
+.event-card__progress-fill--Full { background: var(--status-full-text); }
+.event-card__progress-fill--Past { background: var(--status-past-text); }
+
+.event-card__places {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin: 0;
+  font-weight: 500;
+}
+
+.event-card__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0 1.25rem 1.25rem;
+  padding: 0.85rem 1.5rem;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow:
+    0 4px 12px rgba(139, 92, 246, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.event-card__link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transition: left 0.5s ease;
+}
+
+.event-card__link:hover::before {
+  left: 100%;
+}
+
+.event-card__link:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 24px rgba(139, 92, 246, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+}
+
+.event-card__link:active {
+  transform: translateY(0);
+}
+
+.event-card--past .event-card__link {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-muted);
+  box-shadow: none;
+  border: 1px solid var(--border-color);
+}
+
+@media (max-width: 480px) {
+  .event-card__image-wrapper {
+    height: 150px;
+  }
+  .event-card__badge {
+    top: calc(150px + 1.25rem);
+  }
+  .event-card__title {
+    font-size: 1rem;
+  }
+}
