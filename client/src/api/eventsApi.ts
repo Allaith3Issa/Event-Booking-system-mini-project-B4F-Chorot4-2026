@@ -1,7 +1,6 @@
 import type { EventItem, ApiError, SortBy } from "../types";
 
-const BASE_URL = "http://localhost:3000";
-
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 export interface GetEventsParams {
   category?: string;
   date?: string;
@@ -36,7 +35,9 @@ export async function getEvents(
     }
   }
 
-  const response = await fetch(`${BASE_URL}/events?${queryParams.toString()}`);
+  const response = await fetch(
+    `${API_BASE_URL}/events?${queryParams.toString()}`,
+  );
 
   if (!response.ok) {
     const errorData: ApiError = await response.json().catch(() => ({}));
@@ -47,7 +48,7 @@ export async function getEvents(
 }
 
 export async function getEventById(id: string | number): Promise<EventItem> {
-  const response = await fetch(`${BASE_URL}/events/${id}`);
+  const response = await fetch(`${API_BASE_URL}/events/${id}`);
 
   if (!response.ok) {
     const errorData: ApiError = await response.json().catch(() => ({}));
@@ -59,7 +60,7 @@ export async function getEventById(id: string | number): Promise<EventItem> {
 
 export async function getEventCategories(): Promise<string[]> {
   try {
-    const response = await fetch(`${BASE_URL}/events?includePast=true`);
+    const response = await fetch(`${API_BASE_URL}/events?includePast=true`);
     if (!response.ok) throw new Error();
 
     const events: EventItem[] = await response.json();

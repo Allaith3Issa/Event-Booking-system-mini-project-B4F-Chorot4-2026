@@ -17,6 +17,12 @@ async function bootstrap() {
     }),
   );
 
+  app.enableCors({
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  });
+
   app.useStaticAssets(join(process.cwd(), 'public', 'images'), {
     prefix: '/images/',
   });
