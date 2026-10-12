@@ -3,8 +3,7 @@ import { computeAvailability } from '../common/helpers/availability';
 import { hasStarted } from '../common/helpers/time';
 
 export const now = new Date();
-const placeholderImageUrl =
-  'http://localhost:3000/assets/images/placeholder.jpg';
+const imageBaseUrl = 'http://localhost:3000/images';
 
 const today = new Intl.DateTimeFormat('en-CA', {
   timeZone: 'Asia/Damascus',
@@ -24,7 +23,7 @@ const bookedAt = `${dateAfterDays(-14)}T00:00:00.000Z`;
 export const seedEvents: EventItem[] = [
   {
     id: 1,
-    imageUrl: placeholderImageUrl,
+    imageUrl: `${imageBaseUrl}/Introduction-to-Web-Development.jpg`,
     title: 'Introduction to Web Development',
     description:
       'A beginner-friendly talk about how browsers and servers work together.',
@@ -40,7 +39,7 @@ export const seedEvents: EventItem[] = [
   },
   {
     id: 2,
-    imageUrl: placeholderImageUrl,
+    imageUrl: `${imageBaseUrl}/Small-Team-Photography-Workshop.jpg`,
     title: 'Small Team Photography Workshop',
     description:
       'Practice composition and lighting with a small group of learners.',
@@ -56,7 +55,7 @@ export const seedEvents: EventItem[] = [
   },
   {
     id: 3,
-    imageUrl: placeholderImageUrl,
+    imageUrl: `${imageBaseUrl}/UI-Design-Basics.jpg`,
     title: 'UI Design Basics',
     description:
       'A hands-on introduction to layouts, typography, and accessible interfaces.',
@@ -72,7 +71,7 @@ export const seedEvents: EventItem[] = [
   },
   {
     id: 4,
-    imageUrl: placeholderImageUrl,
+    imageUrl: `${imageBaseUrl}/Acoustic-Music-Evening.jpg`,
     title: 'Acoustic Music Evening',
     description:
       'An intimate evening of live acoustic music by local performers.',
@@ -88,7 +87,7 @@ export const seedEvents: EventItem[] = [
   },
   {
     id: 5,
-    imageUrl: placeholderImageUrl,
+    imageUrl: `${imageBaseUrl}/Community-Football-Practice.jpg`,
     title: 'Community Football Practice',
     description:
       'Friendly drills and short games for players of all experience levels.',
@@ -104,7 +103,7 @@ export const seedEvents: EventItem[] = [
   },
   {
     id: 6,
-    imageUrl: placeholderImageUrl,
+    imageUrl: `${imageBaseUrl}/Junior-Developers-Meetup.jpg`,
     title: 'Junior Developers Meetup',
     description:
       'Meet other learners, share project ideas, and discuss internship experiences.',
@@ -120,7 +119,7 @@ export const seedEvents: EventItem[] = [
   },
   {
     id: 7,
-    imageUrl: placeholderImageUrl,
+    imageUrl: `${imageBaseUrl}/Writeing-your-first-cv.jpg`,
     title: 'Writing Your First CV',
     description:
       'Practical advice on presenting skills and preparing for a first interview.',
@@ -136,7 +135,7 @@ export const seedEvents: EventItem[] = [
   },
   {
     id: 8,
-    imageUrl: placeholderImageUrl,
+    imageUrl: `${imageBaseUrl}/JavaScript-Problem-Solving.jpg`,
     title: 'JavaScript Problem Solving',
     description:
       'Work through beginner exercises together and explain your solutions.',
@@ -152,7 +151,7 @@ export const seedEvents: EventItem[] = [
   },
   {
     id: 9,
-    imageUrl: placeholderImageUrl,
+    imageUrl: `${imageBaseUrl}/Community-Choir-Concert.jpg`,
     title: 'Community Choir Concert',
     description:
       'A live performance featuring traditional songs and contemporary arrangements.',
@@ -168,7 +167,7 @@ export const seedEvents: EventItem[] = [
   },
   {
     id: 10,
-    imageUrl: placeholderImageUrl,
+    imageUrl: `${imageBaseUrl}/Morning-Walking-Group.jpg`,
     title: 'Morning Walking Group',
     description:
       'A relaxed group walk with a short warm-up and time to meet new people.',

@@ -14,6 +14,7 @@ export default function WrongDoor() {
           left the building.
         </p>
 
+        
         <div className="wrong-door__actions">
           <Link
             to="/"
