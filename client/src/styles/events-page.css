@@ -1,6 +1,6 @@
 .events-hero {
   background:
-    linear-gradient(rgba(2, 6, 23, 0.7), rgba(2, 6, 23, 0.9)),
+    linear-gradient(rgba(2, 6, 23, 0.1), rgba(2, 6, 23, 0.9)),
     url("../assets/bg.jfif") center/cover no-repeat;
   color: white;
   border-radius: 0;
