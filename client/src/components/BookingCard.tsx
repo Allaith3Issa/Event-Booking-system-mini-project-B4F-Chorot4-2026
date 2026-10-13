@@ -11,9 +11,12 @@ function BookingCard({booking, isCancelling, onCancel}: BookingCardProps) {
   return (
     <article className="booking-card" aria-live="polite">
       <div className="booking-card-heading">
-        <div>
+        <div className="booking-code-box">
           <p className="eyebrow">Booking code</p>
-          <h2>{booking.code}</h2>
+          <h2 className="code-highlight">{booking.code}</h2>
+          <p className="booking-code-reminder">
+            Keep this code—you’ll need it to find or cancel your booking.
+          </p>
         </div>
         <StatusBadge status={booking.status} />
       </div>

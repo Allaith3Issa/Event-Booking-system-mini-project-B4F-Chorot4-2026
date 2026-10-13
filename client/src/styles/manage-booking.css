@@ -161,6 +161,8 @@
 
 .booking-card-heading {
   display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
   border-bottom: 1px solid var(--border-color);

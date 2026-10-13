@@ -59,6 +59,9 @@ export default function ConfirmationPage() {
           <div className="booking-code-box">
             <span>Booking Code:</span>
             <strong className="code-highlight">{booking.code}</strong>
+            <p className="booking-code-reminder">
+              Keep this code—you’ll need it to find or cancel your booking.
+            </p>
           </div>
         </div>
 
