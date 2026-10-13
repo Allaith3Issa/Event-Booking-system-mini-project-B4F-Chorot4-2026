@@ -29,6 +29,43 @@
   margin: 0;
 }
 
+.booking-code-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.booking-code-copy {
+  padding: 0.5rem 0.875rem;
+  border: 1px solid var(--primary-hover);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.booking-code-copy:hover {
+  background: var(--primary-light);
+}
+
+.booking-code-copy:focus-visible {
+  outline: 2px solid var(--primary-hover);
+  outline-offset: 3px;
+}
+
+.booking-code-copy-status {
+  flex-basis: 100%;
+  color: var(--text-main);
+  font-size: 0.875rem;
+}
+
+.booking-code-copy-status:empty {
+  display: none;
+}
+
 .success-message {
   position: fixed;
   bottom: 2rem;

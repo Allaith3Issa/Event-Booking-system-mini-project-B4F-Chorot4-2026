@@ -1,5 +1,6 @@
 import type {Booking} from "../types";
 import StatusBadge from "./StatusBadge";
+import CopyBookingCode from "./CopyBookingCode";
 
 interface BookingCardProps {
   booking: Booking;
@@ -13,7 +14,10 @@ function BookingCard({booking, isCancelling, onCancel}: BookingCardProps) {
       <div className="booking-card-heading">
         <div className="booking-code-box">
           <p className="eyebrow">Booking code</p>
-          <h2 className="code-highlight">{booking.code}</h2>
+          <div className="booking-code-row">
+            <h2 className="code-highlight">{booking.code}</h2>
+            <CopyBookingCode code={booking.code} />
+          </div>
           <p className="booking-code-reminder">
             Keep this code—you’ll need it to find or cancel your booking.
           </p>

@@ -1,5 +1,6 @@
 import {useLocation, Link} from "react-router-dom";
 import StatusBadge from "../components/StatusBadge";
+import CopyBookingCode from "../components/CopyBookingCode";
 
 interface BookingConfirmationState {
   booking?: {
@@ -58,7 +59,10 @@ export default function ConfirmationPage() {
 
           <div className="booking-code-box">
             <span>Booking Code:</span>
-            <strong className="code-highlight">{booking.code}</strong>
+            <div className="booking-code-row">
+              <strong className="code-highlight">{booking.code}</strong>
+              <CopyBookingCode code={booking.code} />
+            </div>
             <p className="booking-code-reminder">
               Keep this code—you’ll need it to find or cancel your booking.
             </p>

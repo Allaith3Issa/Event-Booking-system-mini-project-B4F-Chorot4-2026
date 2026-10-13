@@ -2,7 +2,10 @@ node_modules
 dist
 *.tsbuildinfo
 .env
-
+/api/
+/client/src/api/
+/client/vite.config.ts
+/Doc/
 # Local agent guidance and notes
 AGENTS.md
 AGENTS*.md

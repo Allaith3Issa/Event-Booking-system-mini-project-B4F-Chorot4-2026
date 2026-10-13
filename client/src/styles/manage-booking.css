@@ -380,6 +380,13 @@
   margin-right: 1rem;
 }
 
+@media (max-width: 768px) {
+  .manage-booking:has(.booking-card) {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 500px;
+  }
+}
+
 @media (max-width: 600px) {
   .page-container form:not(.search-form) {
     padding: 1.5rem;

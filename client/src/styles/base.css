@@ -31,3 +31,46 @@ button {
   margin: 0 auto;
   padding: 2rem 1.5rem;
 }
+
+.loading-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.875rem;
+  width: 100%;
+  min-height: 120px;
+  padding: 1.5rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.loading-message::before {
+  content: "";
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border: 3px solid var(--primary-light);
+  border-top-color: var(--primary-hover);
+  border-radius: 50%;
+  animation: loading-spin 0.9s linear infinite;
+}
+
+.loading-message p {
+  margin: 0;
+}
+
+@keyframes loading-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-message::before {
+    animation: none;
+  }
+}
