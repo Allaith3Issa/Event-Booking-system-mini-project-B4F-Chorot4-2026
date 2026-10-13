@@ -1,4 +1,4 @@
-.btn-primary, .primary-button {
+.btn-primary, .primary-button, .btn-disabled {
   background-color: var(--primary);
   color: white;
   padding: 0.75rem 1.5rem;
@@ -17,9 +17,13 @@
 }
 
 .btn-primary:disabled, .primary-button:disabled, .btn-disabled {
-  background-color: var(--text-light);
+  background-color: var(--border-color);
+  color: var(--text-muted);
+  border: 1px solid var(--text-light);
   cursor: not-allowed;
-  opacity: 0.7;
+  opacity: 1;
+  box-shadow: none;
+  transform: none;
 }
 
 .btn-secondary {
